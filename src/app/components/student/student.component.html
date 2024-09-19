@@ -1,0 +1,206 @@
+<div class="container-fluid">
+  <div class="row header">
+    <div class="col-6">
+      <h1 class="text-white px-2 pt-2">Student Portal</h1>
+    </div>
+    <div class="col-6 text-end">
+      <button class="btn btn-outline-info px-2 pt-2" (click)="openModal()">
+        Add Student
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    @for (student of studentList; track $index) {
+    <div class="col-3">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">{{ student.name | titlecase }}</div>
+            <div class="col-6 text-end">{{ student.mobile }}</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>
+            <b>Email: </b><span style="float: right">{{ student.email }}</span>
+          </p>
+          <p>
+            <span> <b>Gender: </b>{{ student.gender | titlecase }}</span>
+            <span style="float: right"
+              ><b>Join Date:</b>{{ student.joined_date | date }}</span
+            >
+          </p>
+          <p>
+            <b>Address:</b
+            ><span style="float: right">{{ student.address }}</span>
+          </p>
+          <p>
+            <b>Status:</b
+            ><span style="float: right">{{
+              student.status ? "Active" : "In-active"
+            }}</span>
+          </p>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-6">
+              <i
+                class="btn fa fa-edit text-primary"
+                style="font-size: 25px"
+                (click)="onEdit(student)"
+              ></i>
+            </div>
+            <div class="col-6 text-end">
+              <i
+                class="btn fa fa-trash text-danger"
+                style="font-size: 25px"
+                (click)="onDelete(student)"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+<!-- Modal -->
+<!-- The Modal -->
+<div #myModal class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        @if(stdObj.id==0){
+
+        <h1 class="modal-title pt-3">Add Student</h1>
+        } @else {
+        <h1 class="modal-title pt-3">Update Student</h1>
+
+        }
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeModal()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="name"
+              name="name"
+              [(ngModel)]="stdObj.name"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="email"
+              name="email"
+              [(ngModel)]="stdObj.email"
+            />
+          </div>
+          <div class="col-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="mobile"
+              name="mobile"
+              [(ngModel)]="stdObj.mobile"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-6">
+            <input
+              type="date"
+              name=""
+              id=""
+              class="form-control"
+              [(ngModel)]="stdObj.joined_date"
+            />
+          </div>
+          <div class="col-6">
+            <select
+              name=""
+              id=""
+              class="form-control"
+              [(ngModel)]="stdObj.gender"
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12">
+            <input
+              type="text"
+              placeholder="Address"
+              class="form-control"
+              [(ngModel)]="stdObj.address"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3"></div>
+        <div class="col-12">
+          <div class="form-group form-check">
+            <div class="form-group form-check">
+              <input
+                type="checkbox"
+                [(ngModel)]="stdObj.status"
+                class="form-check-input"
+              />
+              <label> Active</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+            (click)="closeModal()"
+          >
+            Close
+          </button>
+          @if(stdObj.id==0){
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            (click)="onSaveForm()"
+          >
+            Save
+          </button>
+          } @else {
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            (click)="onUpdateForm()"
+          >
+            Update
+          </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
