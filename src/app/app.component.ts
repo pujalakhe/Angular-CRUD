@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { StudentComponent } from './components/student/student.component';
 @Component({
   selector: 'app-root',
@@ -14,5 +10,5 @@ import { StudentComponent } from './components/student/student.component';
 })
 export class AppComponent {
   title = 'user-mngmt';
-  constructor(private dialog: MatDialog) {}
+  constructor() {}
 }
