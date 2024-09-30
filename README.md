@@ -22,7 +22,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
     ng serve
 
 ## User Interface
-  https://github.com/user-attachments/assets/cde0be7c-985f-47a1-a580-8d583c571dea
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
