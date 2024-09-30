@@ -22,6 +22,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
     ng serve
 
 ## User Interface
+  https://github.com/user-attachments/assets/70c35130-1612-43bd-adbd-4e6dc4651bff
 
 ## Code scaffolding
 
